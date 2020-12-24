@@ -1,0 +1,13 @@
+class Solution:
+    prime = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103]
+    def ks(s):
+        c = 1
+        for cc in s: c *= Solution.prime[ord(cc)-97]
+        return c
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        res = {}
+        for s in strs:
+            k = Solution.ks(s)
+            if k not in res: res[k] = [s]
+            else: res[k].append(s)
+        return list(res.values())
